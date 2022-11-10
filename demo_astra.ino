@@ -61,7 +61,13 @@ void makeHTTPRequest() {
   bodystr.concat("\",\"productname\":\"");
   bodystr.concat("test");
   bodystr.concat("\"}");
+  /*end define body*/
+  
+   /*Send*/
   int httpResponseCode = http.POST(bodystr.c_str());
+  /*End Send*/
+
+  /*Receive body*/
   if (httpResponseCode>0) {
         String payload = http.getString();
         Serial.println("payload: "+payload);
@@ -69,9 +75,9 @@ void makeHTTPRequest() {
       Serial.print("Error code: ");
       Serial.println(httpResponseCode);
     }
+  /*End Receive body*/
     http.end();
-  /*end define body*/
-
+ 
   delay(20000);
 }
 
